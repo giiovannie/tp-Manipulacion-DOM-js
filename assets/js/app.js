@@ -26,7 +26,11 @@ const personajes = [
   }
 ];
 
-const contenedor = document.querySelector("#cards-grid")
+const contenedor = document.querySelector("#cards-grid") // div -row
+const input = document.getElementById("busqueda"); // input 
+let busqueda = null;
+const btnEnviar = document.getElementById("enviar")
+let coincidencia = null;
 
 // manejos de listado de personajes
 function mostrarPersonajes(mlp) {
@@ -35,18 +39,35 @@ function mostrarPersonajes(mlp) {
   mlp.forEach(personaje => {
     contenedor.innerHTML += `
       <div class="col">
-        <div class="card" style="width: 18rem">
+        <div class="card">
           <img src="${personaje.imagen}" class="card-img-top" alt="${personaje.nombre}">
           <div class="card-body">
             <h5 class="card-title">${personaje.nombre}</h5>
-            <a href="#" class="btn btn-primary bg-danger">Eliminar card</a>
+            <a href="#" class="btn btn-primary bg-danger border-secondary">Eliminar card</a>
           </div>
         </div>
       </div>
     `;
   });
 }
+                      //personajes,personaje buscado
+function buscarPersonajes(per,pb){
+  coincidencia = per.filter( p => {
+    return p.nombre.toLowerCase().replace(/\s/g, "") === pb
+  })
+  
+  console.log(coincidencia);
+}
 
 window.addEventListener("load", ()=>{
   mostrarPersonajes(personajes)
 })
+
+
+btnEnviar.addEventListener("click", ()=>{
+  busqueda = input.value.replace(/\s/g, "").toLowerCase();
+  buscarPersonajes(personajes,busqueda)
+  mostrarPersonajes(coincidencia)
+})
+
+

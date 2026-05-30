@@ -1,0 +1,13 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/*cards*/
+
+.card:hover{
+    transition: all 0.15s linear;
+    transform: translate(-1px,1px);
+}
