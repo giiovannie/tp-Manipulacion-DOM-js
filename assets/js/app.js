@@ -26,3 +26,27 @@ const personajes = [
   }
 ];
 
+const contenedor = document.querySelector("#cards-grid")
+
+// manejos de listado de personajes
+function mostrarPersonajes(mlp) {
+  contenedor.innerHTML = "";
+
+  mlp.forEach(personaje => {
+    contenedor.innerHTML += `
+      <div class="col">
+        <div class="card" style="width: 18rem">
+          <img src="${personaje.imagen}" class="card-img-top" alt="${personaje.nombre}">
+          <div class="card-body">
+            <h5 class="card-title">${personaje.nombre}</h5>
+            <a href="#" class="btn btn-primary bg-danger">Eliminar card</a>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+window.addEventListener("load", ()=>{
+  mostrarPersonajes(personajes)
+})
