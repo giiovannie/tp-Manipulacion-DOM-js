@@ -78,6 +78,7 @@ function cargarPersonaje(p,n,u){
 
   p.push(datos)
   console.log(p[5].nombre);
+  console.log(p);
   return datos
 }
 
@@ -103,7 +104,13 @@ formPersonaje.addEventListener("submit", (e)=>{
   cargarPersonaje(personajes,inputName.value,inputUrl.value)
   
   form.classList.add("d-none")
+
+  formPersonaje.reset()
   
   mostrarPersonajes(personajes)
   
+})
+
+btnCancelar.addEventListener("click", ()=>{
+    form.classList.add("d-none")
 })
