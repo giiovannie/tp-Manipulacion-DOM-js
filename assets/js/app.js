@@ -48,7 +48,7 @@ function mostrarPersonajes(mlp) {
 
   mlp.forEach(personaje => {
     contenedor.innerHTML += `
-      <div class="col">
+      <div class="col-3">
         <div class="card">
           <img src="${personaje.imagen}" class="card-img-top" alt="${personaje.nombre}">
           <div class="card-body">
