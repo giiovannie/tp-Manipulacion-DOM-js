@@ -19,36 +19,55 @@
       <h1 class="text-light fs-3 fw-bolder">Super-Heros</h1>
       <button class="btn btn-primary bg-secondary">Agregar Heroe +</button>
     </header>
-    <main>
-      <div class="container mt-4">
-        <div class="input-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Buscar personaje..."
-            id="busqueda"
-          />
-          <button class="btn btn-primary" id="enviar">Buscar</button>
+    <main class="position-relative"> 
+      <section>
+        <div class="container mt-4">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Buscar personaje..."
+              id="busqueda"
+            />
+            <button class="btn btn-primary" id="enviar">Buscar</button>
+          </div>
         </div>
-      </div>
 
-      <div class="container w-100 vh-100 container-fluid mt-4">
-        <div class="row g-3" id="cards-grid">
-          <!-- <div class="col">
-            <div class="card" style="width: 18rem">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+        <!-- personajes grilla -->
+        <div class="container w-100 vh-100 container-fluid mt-4">
+            <div class="row g-3" id="cards-grid">
+              <!-- <div class="col">
+                <div class="card" style="width: 18rem">
+                  <img src="..." class="card-img-top" alt="..." />
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+              </div> -->
             </div>
-          </div> -->
+          </div>
         </div>
-      </div>
+      </section>
 
-      <!-- personajes -->
+      <section class="position-absolute  container-fluid d-flex justify-content-center align-items-center flex-column p-4" id="section-form">
+        <div class="" id="bloque"> <!-- aca desaparece y aparece segun el usuario eliga crear o no -->
+          <div class="bloque d-flex justify-content-center align-items-center flex-column bg-white border border-dark p-3 rounded-1">
+            <h2>Carga tu personaje</h2>
 
-      <div class="row"></div>
+            <label for="name" class="fs-5 fw-bolder">Nombre Personaje</label>
+            <input type="text" id="name" class="rounded border-1 p-1 mb-3" placeholder="Batman ">
+
+            <label for="url-img" class="fs-5 fw-bolder">Url de la imagen</label>
+            <input type="url" name="img-url" id="img-url" placeholder="htpps///.." class="rounded border-1 p-1 mb-2">
+
+            <div class="btns d-flex justify-content-center align-items-center gap-2 " >
+              <button type="submit" class="btn bg-primary text-light fw-bolder">Cargar personaje</button>
+              <button type="submit" class="btn bg-secondary text-light fw-bolder">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <script src="/assets/js/app.js"></script>
     <script
