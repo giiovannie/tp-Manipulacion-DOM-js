@@ -32,6 +32,16 @@ let busqueda = null;
 const btnEnviar = document.getElementById("enviar")
 let coincidencia = null;
 
+const form = document.querySelector("#section-form");
+const formPersonaje = document.querySelector("#form-personaje")
+const btnCrear = document.querySelector("#btn-crear");
+const btnCancelar = document.querySelector(".btn-cancel")
+const inputName = document.querySelector("#name");
+const inputUrl = document.querySelector("#img-url")
+let bloque = null;
+let datos = null;
+const btnModal = document.querySelector("#Agregar")
+
 // manejos de listado de personajes
 function mostrarPersonajes(mlp) {
   contenedor.innerHTML = "";
@@ -59,6 +69,18 @@ function buscarPersonajes(per,pb){
   console.log(coincidencia);
 }
 
+function cargarPersonaje(p,n,u){
+  datos = {
+    id: p.length + 1,
+    nombre: n,
+    imagen: u
+  }
+
+  p.push(datos)
+  console.log(p[5].nombre);
+  return datos
+}
+
 window.addEventListener("load", ()=>{
   mostrarPersonajes(personajes)
 })
@@ -71,3 +93,17 @@ btnEnviar.addEventListener("click", ()=>{
 })
 
 
+btnModal.addEventListener("click", ()=>{
+  form.classList.remove("d-none");
+})
+
+formPersonaje.addEventListener("submit", (e)=>{
+  e.preventDefault()
+  
+  cargarPersonaje(personajes,inputName.value,inputUrl.value)
+  
+  form.classList.add("d-none")
+  
+  mostrarPersonajes(personajes)
+  
+})
