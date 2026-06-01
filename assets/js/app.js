@@ -25,7 +25,8 @@ const personajes = [
     imagen: "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/5-abraxas.jpg"
   }
 ];
-let perosnajesCopia = [...personajes]
+
+let personajesCopia = [...personajes]
 
 const contenedor = document.querySelector("#cards-grid") // div -row
 const input = document.getElementById("busqueda"); // input 
@@ -44,10 +45,10 @@ let datos = null;
 const btnModal = document.querySelector("#Agregar")
 
 // manejos de listado de personajes
-function mostrarPersonajes(mlp) {
+function mostrarPersonajes(ManejoPersonaje) {
   contenedor.innerHTML = "";
 
-  mlp.forEach(personaje => {
+  ManejoPersonaje.forEach(personaje => {
     contenedor.innerHTML += `
       <div class="col-3">
         <div class="card" data-id="${personaje.id}">
@@ -62,36 +63,36 @@ function mostrarPersonajes(mlp) {
   });
 }
                       //personajes,personaje buscado
-function buscarPersonajes(per,pb){
-  coincidencia = per.filter( p => {
-    return p.nombre.toLowerCase().replace(/\s/g, "") === pb
+function buscarPersonajes(personaje,personajeBuscado){
+  coincidencia = personaje.filter( p => {
+    return p.nombre.toLowerCase().replace(/\s/g, "") === personajeBuscado
   })
   
   console.log(coincidencia);
 }
                       //persona,nombre,url
-function cargarPersonaje(p,n,u){
+function cargarPersonaje(persona,nombre,url){
   datos = {
-    id: p.length + 1,
-    nombre: n,
-    imagen: u
+    id: persona.length + 1,
+    nombre: nombre,
+    imagen: url
   }
 
-  p.push(datos)
-  console.log(p[5].nombre);
-  console.log(p);
+  persona.push(datos)
+  console.log(persona[5].nombre);
+  console.log(persona);
   return datos
 }
 
 //carga perosnajes al cargar la pagina
 window.addEventListener("load", ()=>{
-  mostrarPersonajes(personajes)
+  mostrarPersonajes(personajesCopia)
 })
 
 //accion que buscaun persnaje
 btnEnviar.addEventListener("click", ()=>{
   busqueda = input.value.replace(/\s/g, "").toLowerCase();
-  buscarPersonajes(personajes,busqueda)
+  buscarPersonajes(personajesCopia,busqueda)
   mostrarPersonajes(coincidencia)
 })
 
@@ -103,10 +104,10 @@ btnModal.addEventListener("click", ()=>{
 //accion que guarda y crea un personaje
 formPersonaje.addEventListener("submit", (e)=>{
   e.preventDefault()
-  cargarPersonaje(personajes,inputName.value,inputUrl.value)
+  cargarPersonaje(personajesCopia,inputName.value,inputUrl.value)
   form.classList.add("d-none")
   formPersonaje.reset()
-  mostrarPersonajes(personajes)
+  mostrarPersonajes(personajesCopia)
   
 })
 
@@ -125,9 +126,12 @@ contenedor.addEventListener("click", (e) => {
 
     let idNum = Number(valorID)
     console.log(typeof idNum);
+
+    console.log({personajesCopia});
     
-    perosnajesCopia = perosnajesCopia.filter(p => p.id !== idNum)
-    console.log(perosnajesCopia);
-    mostrarPersonajes(perosnajesCopia)
+    personajesCopia = personajesCopia.filter(p => p.id !== idNum)
+    console.log({personajesCopia});
+    mostrarPersonajes(personajesCopia)
   }
 });
+    
